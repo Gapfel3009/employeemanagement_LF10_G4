@@ -9,6 +9,7 @@ import { EditEmployeeComponent } from './components/edit-employee/edit-employee.
 import { ShowEmployeeComponent } from './components/show-employee/show-employee.component';
 import { NewEmployeeComponent } from './components/new-employee/new-employee.component';
 import {SearchbarComponent} from "./components/searchbar/searchbar.component";
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {SearchbarComponent} from "./components/searchbar/searchbar.component";
     EmployeeListComponent,
     EditEmployeeComponent,
     ShowEmployeeComponent,
-    NewEmployeeComponent
+    NewEmployeeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
