@@ -1,0 +1,11 @@
+#searchbar {
+  border-bottom-left-radius: 50px;
+  border-top-left-radius: 50px;
+  border: solid 1px lightgray;
+}
+#SubmitButton {
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  border: solid 1px lightgray;
+  background-color: white;
+}
