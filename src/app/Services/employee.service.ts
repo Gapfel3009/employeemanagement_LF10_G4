@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Employee} from "../model/Employee";
 
 @Injectable({
@@ -11,7 +11,11 @@ private apiUrl = "https://employee.szut.dev"
   constructor(private http: HttpClient) {}
 
   getEmployees(): Observable<any> {
-  return this.http.get(`${this.apiUrl}/employees`);
+    alert("Employee list is loaded!");
+  return this.http.get<Employee[]>(`${this.apiUrl}/employees`,{
+    headers: new HttpHeaders()
+      .set('Content-Type', 'application/json')
+  });
   }
   getEmployeeById(id: number): Observable<any> {
     return this.http.get<Employee>(`${this.apiUrl}/employees/${id}`);

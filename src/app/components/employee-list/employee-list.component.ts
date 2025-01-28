@@ -9,7 +9,7 @@ import {EmployeeService} from "../../Services/employee.service";
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeListComponent {
+export class EmployeeListComponent implements OnInit {
 
   employees$: Observable<Employee[]>;
 
@@ -21,6 +21,10 @@ export class EmployeeListComponent {
 
   fetchData() {
     this.employees$ = this.MaService.getEmployees();
+
+  }
+  ngOnInit() {
+    this.fetchData();
   }
 
 }
