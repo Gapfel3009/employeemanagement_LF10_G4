@@ -10,7 +10,6 @@ import { ShowEmployeeComponent } from './components/show-employee/show-employee.
 import { NewEmployeeComponent } from './components/new-employee/new-employee.component';
 import {SearchbarComponent} from "./components/searchbar/searchbar.component";
 import { HeaderComponent } from './components/header/header.component';
-import {JwtInterceptor} from "./jwt.interceptor";
 
 @NgModule({
   declarations: [
@@ -28,9 +27,7 @@ import {JwtInterceptor} from "./jwt.interceptor";
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-  ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
