@@ -20,7 +20,8 @@ private apiUrl = '/backend'
     return this.http.get<Employee>(`${this.apiUrl}/${id}`);
   }
   createEmployee(employee: Employee): Observable<any> {
-  return this.http.post<Employee>(`${this.apiUrl}`, employee);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  return this.http.post<Employee>(this.apiUrl, employee, {headers});
   }
   deleteEmployee(id: number): Observable<any> {
   return this.http.delete<Employee>(`${this.apiUrl}/${id}`);

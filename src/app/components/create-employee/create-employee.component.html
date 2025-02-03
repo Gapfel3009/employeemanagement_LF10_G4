@@ -9,34 +9,38 @@
     <div class="details-grid">
       <div class="detail-item">
         <label for="firstName">Name:</label>
-        <input id="firstName" type="text">
+        <input #firstName id="firstName" type="text">
       </div>
       <div class="detail-item">
         <label for="lastName">Nachname:</label>
-        <input id="lastName" type="text">
+        <input #lastName id="lastName" type="text">
       </div>
       <div class="detail-item">
         <label for="city">Stadt:</label>
-        <input id="city" type="text">
+        <input #city id="city" type="text">
       </div>
       <div class="detail-item">
         <label for="street">Straße:</label>
-        <input id="street" type="text">
+        <input #street id="street" type="text">
       </div>
       <div class="detail-item">
         <label for="phone">Telefonnummer:</label>
-        <input id="phone" type="text">
+        <input #phone id="phone" type="text">
       </div>
       <div class="detail-item">
         <label for="postalCode">PLZ:</label>
-        <input id="postalCode" type="text">
+        <input #postalCode id="postalCode" type="text">
       </div>
     </div>
-
     <div class="buttons">
-      <button class="return" onclick="getEmployees()">Zurück</button>
-      <button class="edit" onclick="updateEmployee()">Bearbeiten</button>
-      <button class="delete" onclick="deleteEmployee()">Löschen</button>
+      <button class="return" (click)="redirectToEmployeeList()">Abbrechen</button>
+      <button class="delete" (click)="saveEmployeeToDB(firstName.value,lastName.value,city.value,street.value,phone.value,postalCode.value)">Sichern</button>
+    </div>
+  </div>
+  <div class="overlay" *ngIf="showError">
+    <div class="confirmation-box">
+      <p>Es müssen alle Felder ausgefüllt sein um einen Mitarbeiter anlegen zu können</p>
+      <button (click)="ok()">Okay</button>
     </div>
   </div>
 </div>
