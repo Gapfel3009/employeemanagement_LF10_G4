@@ -11,6 +11,9 @@ import { NewEmployeeComponent } from './components/new-employee/new-employee.com
 import {SearchbarComponent} from "./components/searchbar/searchbar.component";
 import { HeaderComponent } from './components/header/header.component';
 
+import { EmployeeService } from './Services/employee.service';
+import {FormsModule} from "@angular/forms";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +28,10 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [ ],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

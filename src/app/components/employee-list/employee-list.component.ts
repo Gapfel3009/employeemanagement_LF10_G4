@@ -3,6 +3,7 @@ import {Observable, of} from "rxjs";
 import {Employee} from "../../model/Employee";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {EmployeeService} from "../../Services/employee.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -16,6 +17,7 @@ export class EmployeeListComponent implements OnInit {
   EmployeeId!: number;
 
   constructor(private http: HttpClient,
+              private router: Router,
              private MaService: EmployeeService) {
     this.employees$ = of([]);
     this.fetchData();
@@ -41,4 +43,16 @@ export class EmployeeListComponent implements OnInit {
   cancelDeleteEmployee() {
     this.showConfirmation = false;
   }
+
+  viewDetailsEmployee(employeeId: number | undefined) {
+    if (employeeId) {
+      // Rufe die Details des Mitarbeiters ab
+      this.MaService.getEmployeeById(employeeId).subscribe(employee => {
+        this.router.navigate(['/employee', employeeId], {
+        });
+      });
+    }
+}
+
+
 }
