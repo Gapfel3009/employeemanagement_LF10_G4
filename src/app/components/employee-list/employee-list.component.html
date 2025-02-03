@@ -17,16 +17,24 @@
         <th align="center">Löschen</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody >
         <ng-container *ngFor="let e of employees$ | async">
           <tr>
             <td>{{e.firstName}}</td>
             <td>{{e.lastName}}</td>
             <td width="50" align="center"><button class="material-icons table-button btn btn-dark">edit</button></td>
-            <td width="50" align="center"><button class="material-icons table-button btn btn-dark">delete</button></td>
+            <td width="50" align="center"><button class="material-icons table-button btn btn-dark" (click)="deleteEmployee(e.firstName!, e.id!)">delete</button></td>
           </tr>
         </ng-container>
       </tbody>
     </table>
   </div>
+  <div class="overlay" *ngIf="showConfirmation">
+    <div class="confirmation-box">
+      <p>Möchten sie den Mitarbeiter {{Employeename}} mit ID {{EmployeeId}} wirklich löschen?</p>
+    <button (click)="confirmDeleteEmployee(EmployeeId)">Jo, hau weg den Typen</button>
+    <button (click)="cancelDeleteEmployee()">Ne, is der Falsche</button>
+    </div>
+  </div>
 </div>
+
