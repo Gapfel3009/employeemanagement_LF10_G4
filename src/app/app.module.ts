@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { EmployeeService } from './Services/employee.service';
 import {FormsModule} from "@angular/forms";
+import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {FormsModule} from "@angular/forms";
     EditEmployeeComponent,
     ShowEmployeeComponent,
     NewEmployeeComponent,
-    HeaderComponent
+    HeaderComponent,
+    CreateEmployeeComponent
   ],
   imports: [
     BrowserModule,

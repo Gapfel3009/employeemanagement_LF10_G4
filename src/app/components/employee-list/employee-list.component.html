@@ -4,7 +4,7 @@
     <app-header></app-header>
 
     <app-searchbar></app-searchbar>
-    <button (click)="fetchData()" style="background-color: white;">Hinzufügen</button>
+    <button (click)="redirectCreateEmployee()" style="background-color: white;">Hinzufügen</button>
   </div>
   <div>
     <table class ="table table-hover">
@@ -22,7 +22,7 @@
             <td>{{e.firstName}}</td>
             <td>{{e.lastName}}</td>
             <td width="50" align="center"><button class="material-icons table-button btn btn-dark">edit</button></td>
-            <td width="50" align="center"><button class="material-icons table-button btn btn-dark" (click)="deleteEmployee(e.firstName!, e.id!)">delete</button></td>
+            <td width="50" align="center"><button class="material-icons table-button btn btn-dark" (click)="deleteEmployee(e.firstName!, e.id!, $event)">delete</button></td>
           </tr>
         </ng-container>
       </tbody>

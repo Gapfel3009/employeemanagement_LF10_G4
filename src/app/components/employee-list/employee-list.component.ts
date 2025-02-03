@@ -31,7 +31,8 @@ export class EmployeeListComponent implements OnInit {
     this.fetchData();
   }
 
-  deleteEmployee(name: string , id: number ) {
+  deleteEmployee(name: string , id: number, event: MouseEvent ) {
+    event.stopPropagation();
     this.Employeename = name;
     this.EmployeeId = id;
     this.showConfirmation = true;
@@ -47,12 +48,12 @@ export class EmployeeListComponent implements OnInit {
   viewDetailsEmployee(employeeId: number | undefined) {
     if (employeeId) {
       // Rufe die Details des Mitarbeiters ab
-      this.MaService.getEmployeeById(employeeId).subscribe(employee => {
-        this.router.navigate(['/employee', employeeId], {
-        });
+      this.router.navigate(['/employee', employeeId], {
       });
     }
-}
+  }
 
-
+  redirectCreateEmployee() {
+      this.router.navigate(['/createEmployee'], {})
+  }
 }

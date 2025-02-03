@@ -1,0 +1,42 @@
+<div class="w-auto">
+  <div>
+    <app-header></app-header>
+  </div>
+
+  <div  class="container">
+    <h2>Mitarbeiter Details</h2>
+
+    <div class="details-grid">
+      <div class="detail-item">
+        <label for="firstName">Name:</label>
+        <input id="firstName" type="text">
+      </div>
+      <div class="detail-item">
+        <label for="lastName">Nachname:</label>
+        <input id="lastName" type="text">
+      </div>
+      <div class="detail-item">
+        <label for="city">Stadt:</label>
+        <input id="city" type="text">
+      </div>
+      <div class="detail-item">
+        <label for="street">Straße:</label>
+        <input id="street" type="text">
+      </div>
+      <div class="detail-item">
+        <label for="phone">Telefonnummer:</label>
+        <input id="phone" type="text">
+      </div>
+      <div class="detail-item">
+        <label for="postalCode">PLZ:</label>
+        <input id="postalCode" type="text">
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="return" onclick="getEmployees()">Zurück</button>
+      <button class="edit" onclick="updateEmployee()">Bearbeiten</button>
+      <button class="delete" onclick="deleteEmployee()">Löschen</button>
+    </div>
+  </div>
+</div>
