@@ -20,12 +20,14 @@ export class EmployeeListComponent implements OnInit {
               private router: Router,
              private MaService: EmployeeService) {
     this.employees$ = of([]);
-    this.fetchData();
   }
 
   fetchData() {
+
+    alert("Vorher");
     this.employees$ = this.MaService.getEmployees();
 
+    alert("Nachher");
   }
   ngOnInit() {
     this.fetchData();

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {catchError, Observable, throwError} from "rxjs";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Employee} from "../model/Employee";
 
 @Injectable({
@@ -21,7 +21,14 @@ private apiUrl = '/backend'
   }
   createEmployee(employee: Employee): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  return this.http.post<Employee>(this.apiUrl, employee, {headers});
+  return this.http.post<Employee>(this.apiUrl, employee, {headers}).pipe(
+    catchError(this.handleError)
+  );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.error('An error occurred:', error);
+    return throwError('Something went wrong; please try again later.');
   }
   deleteEmployee(id: number): Observable<any> {
   return this.http.delete<Employee>(`${this.apiUrl}/${id}`);
