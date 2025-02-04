@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
-import {Employee} from "../../model/Employee";
+import {NewEmployee} from "../../model/NewEmployee";
 import {EmployeeService} from "../../Services/employee.service";
 
 @Component({
@@ -23,7 +23,7 @@ export class CreateEmployeeComponent {
     if (!firstName || !lastName || !city || !street || !phone || !postalCode) {
       this.showError = true;
     }
-    const newEmployee = new Employee(undefined, lastName, firstName, city, street, phone, postalCode);
+    const newEmployee = new NewEmployee( lastName, firstName, street,postalCode, city,  phone, [{ skill: "string", id: 1 }] );
     this.MaService.createEmployee(newEmployee);
     this.redirectToEmployeeList()
   }
