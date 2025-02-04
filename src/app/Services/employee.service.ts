@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {catchError, Observable, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Employee} from "../model/Employee";
+import {NewEmployee} from "../model/NewEmployee";
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,9 @@ private apiUrl = '/backend'
   getEmployeeById(id: number): Observable<any> {
     return this.http.get<Employee>(`${this.apiUrl}/${id}`);
   }
-  createEmployee(employee: Employee): Observable<any> {
+  createEmployee(employee: NewEmployee): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  return this.http.post<Employee>(this.apiUrl, employee, {headers}).pipe(
+  return this.http.post<NewEmployee>(this.apiUrl, employee, {headers}).pipe(
     catchError(this.handleError)
   );
   }
