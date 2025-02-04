@@ -6,11 +6,6 @@ export class NewEmployee {
               public postcode?: string,
               public city?: string,
               public phone?: string,
-              public skillSet?: [
-                {
-                  skill: string,
-                  id: number
-                }
-              ]) {
+              public skillSet: number[] = []) {
   }
 }

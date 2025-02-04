@@ -20,11 +20,13 @@ private apiUrl = '/backend'
   getEmployeeById(id: number): Observable<any> {
     return this.http.get<Employee>(`${this.apiUrl}/${id}`);
   }
-  createEmployee(employee: NewEmployee): Observable<any> {
+  createEmployee(employee: NewEmployee) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  return this.http.post<NewEmployee>(this.apiUrl, employee, {headers}).pipe(
-    catchError(this.handleError)
-  );
+    this.http.post(this.apiUrl, employee,{headers})
+      .subscribe({
+        next: (response) => console.log('Erfolgreich:', response),
+        error: (error) => console.error('Fehler:', error.error)
+      });
   }
 
   private handleError(error: HttpErrorResponse) {

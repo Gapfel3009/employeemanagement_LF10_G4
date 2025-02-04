@@ -23,7 +23,7 @@ export class CreateEmployeeComponent {
     if (!firstName || !lastName || !city || !street || !phone || !postalCode) {
       this.showError = true;
     }
-    const newEmployee = new NewEmployee( lastName, firstName, street,postalCode, city,  phone, [{ skill: "string", id: 1 }] );
+    const newEmployee = new NewEmployee( lastName, firstName, street,postalCode, city,  phone, [0]);
     this.MaService.createEmployee(newEmployee);
     this.redirectToEmployeeList()
   }
