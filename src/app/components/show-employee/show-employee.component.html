@@ -36,7 +36,15 @@
           <input id="postalCode" type="text" [(ngModel)]="employee.postcode"readonly>
         </div>
       </div>
-    </div>
+      <div class="column">
+        <div class="detail-item">
+          <label>Skills</label>
+          <ul>
+            <li *ngFor="let skill of employee.skillSet || []">{{ skill }}</li>
+          </ul>
+        </div>
+      </div>
+  </div>
 
     <div class="buttons">
       <button class="return" (click)="redirectToEmployeeList()">Zurück</button>

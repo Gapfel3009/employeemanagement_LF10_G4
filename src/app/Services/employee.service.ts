@@ -27,6 +27,7 @@ private apiUrl = '/backend'
   return this.http.delete<Employee>(`${this.apiUrl}/${id}`);
   }
   updateEmployee(employee: Employee): Observable<any> {
-  return this.http.put<Employee>(`${this.apiUrl}/${employee.id}`, employee);
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  return this.http.put<Employee>(`${this.apiUrl}/${employee.id}`, employee, {headers});
   }
 }

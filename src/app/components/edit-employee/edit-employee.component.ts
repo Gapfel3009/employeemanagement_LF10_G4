@@ -32,16 +32,32 @@ export class EditEmployeeComponent implements OnInit {
     this.router.navigate(['/employee'], {})
   }
   loadEmployeeDetails(id: number ) {
+    console.log("Shoe Details für Employee:", this.employee);
+    this.employee.skillSet = this.employee.skillSet || [];
+
+    console.log("Shoe Details für Employee:", this.employee);
     this.employeeService.getEmployeeById(id).subscribe({
       next: (employee: Employee) => {
         this.employee = employee;
       },
     });
   }
-  updateEmployee() {
+  updateEmployeeDetails() {
+    console.log("Sende Update für Employee:", this.employee);
+    if (!this.employee || !this.employee.id) {
+      console.error("Fehler: Kein gültiger Employee zum Aktualisieren.");
+      return;
+    }
+    this.employee.skillSet = []
+    console.log("Sende Update für Employee:", this.employee);
+
     this.employeeService.updateEmployee(this.employee).subscribe({
       next: () => {
+        console.log("Läuft")
         this.redirectToEmployeeList()
+      },
+      error: (err) => {
+        console.error("Fehler beim Update:", err);
       }
     })
   }
