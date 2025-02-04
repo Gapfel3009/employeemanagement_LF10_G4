@@ -7,36 +7,50 @@
     <h2>Mitarbeiter Details</h2>
 
     <div class="details-grid">
-      <div class="detail-item">
-        <label for="firstName">Name:</label>
-        <input id="firstName" type="text" [(ngModel)]="employee.firstName">
+      <div class="column">
+        <div class="detail-item">
+          <label for="firstName">Vorname</label>
+          <input id="firstName" type="text" [(ngModel)]="employee.firstName"readonly>
+        </div>
+        <div class="detail-item">
+          <label for="lastName">Nachname</label>
+          <input id="lastName" type="text" [(ngModel)]="employee.lastName"readonly>
+        </div>
+        <div class="detail-item">
+          <label for="city">Stadt</label>
+          <input id="city" type="text" [(ngModel)]="employee.city"readonly>
+        </div>
       </div>
-      <div class="detail-item">
-        <label for="lastName">Nachname:</label>
-        <input id="lastName" type="text" [(ngModel)]="employee.lastName">
-      </div>
-      <div class="detail-item">
-        <label for="city">Stadt:</label>
-        <input id="city" type="text" [(ngModel)]="employee.city">
-      </div>
-      <div class="detail-item">
-        <label for="street">Straße:</label>
-        <input id="street" type="text" [(ngModel)]="employee.street">
-      </div>
-      <div class="detail-item">
-        <label for="phone">Telefonnummer:</label>
-        <input id="phone" type="text" [(ngModel)]="employee.phone">
-      </div>
-      <div class="detail-item">
-        <label for="postalCode">PLZ:</label>
-        <input id="postalCode" type="text" [(ngModel)]="employee.postalCode">
+
+      <div class="column">
+        <div class="detail-item">
+          <label for="street">Straße</label>
+          <input id="street" type="text" [(ngModel)]="employee.street"readonly>
+        </div>
+        <div class="detail-item">
+          <label for="phone">Telefonnummer</label>
+          <input id="phone" type="text" [(ngModel)]="employee.phone"readonly>
+        </div>
+        <div class="detail-item">
+          <label for="postalCode">PLZ</label>
+          <input id="postalCode" type="text" [(ngModel)]="employee.postcode"readonly>
+        </div>
       </div>
     </div>
 
     <div class="buttons">
-      <button class="return" onclick="getEmployees()">Zurück</button>
-      <button class="edit" onclick="updateEmployee()">Bearbeiten</button>
-      <button class="delete" onclick="deleteEmployee()">Löschen</button>
+      <button class="return" (click)="redirectToEmployeeList()">Zurück</button>
+      <button class="edit" (click)="editEmployee()">Bearbeiten</button>
+      <button class="delete" (click)="deleteEmployee(employee.firstName!, employee.id!, $event)">Löschen</button>
+    </div>
+
+  </div>
+
+  <div class="overlay" *ngIf="showConfirmation">
+    <div class="confirmation-box">
+      <p>Möchten sie den Mitarbeiter {{ employee.firstName }} mit ID {{employee.id}} wirklich löschen?</p>
+      <button (click)="employee.id ? confirmDeleteEmployee(employee.id) : null">Jo, hau weg den Typen</button>
+      <button (click)="cancelDeleteEmployee()">Ne, is der Falsche</button>
     </div>
   </div>
 </div>

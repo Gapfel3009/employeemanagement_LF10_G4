@@ -1,1 +1,49 @@
-<p>edit-employee works!</p>
+<div class="w-auto">
+  <div>
+    <app-header></app-header>
+  </div>
+
+  <div *ngIf="employee" class="container">
+    <h2>Mitarbeiter bearbeiten</h2>
+
+    <div class="details-grid">
+      <div class="column">
+        <div class="detail-item">
+          <label for="firstName">Vorname</label>
+          <input #firstname id="firstName" type="text" [(ngModel)]="employee.firstName">
+        </div>
+        <div class="detail-item">
+          <label for="lastName">Nachname</label>
+          <input id="lastName" type="text" [(ngModel)]="employee.lastName">
+        </div>
+        <div class="detail-item">
+          <label for="city">Stadt</label>
+          <input id="city" type="text" [(ngModel)]="employee.city">
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="detail-item">
+          <label for="street">Straße</label>
+          <input id="street" type="text" [(ngModel)]="employee.street">
+        </div>
+        <div class="detail-item">
+          <label for="phone">Telefonnummer</label>
+          <input id="phone" type="text" [(ngModel)]="employee.phone">
+        </div>
+        <div class="detail-item">
+          <label for="postalCode">PLZ</label>
+          <input id="postalCode" type="text" [(ngModel)]="employee.postcode">
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="return" >Zurück</button>
+      <button class="speichern" (click)="updateEmployee()" >Speichern</button>
+    </div>
+
+  </div>
+
+
+</div>

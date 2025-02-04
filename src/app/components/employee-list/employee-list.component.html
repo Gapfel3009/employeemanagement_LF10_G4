@@ -21,7 +21,7 @@
           <tr (click)="viewDetailsEmployee(e.id)" style="cursor: pointer;">
             <td>{{e.firstName}}</td>
             <td>{{e.lastName}}</td>
-            <td width="50" align="center"><button class="material-icons table-button btn btn-dark">edit</button></td>
+            <td width="50" align="center"><button class="material-icons table-button btn btn-dark" (click)="editEmployee(e.id)">edit</button></td>
             <td width="50" align="center"><button class="material-icons table-button btn btn-dark" (click)="deleteEmployee(e.firstName!, e.id!, $event)">delete</button></td>
           </tr>
         </ng-container>

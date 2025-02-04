@@ -49,7 +49,6 @@ export class EmployeeListComponent implements OnInit {
 
   viewDetailsEmployee(employeeId: number | undefined) {
     if (employeeId) {
-      // Rufe die Details des Mitarbeiters ab
       this.router.navigate(['/employee', employeeId], {
       });
     }
@@ -58,4 +57,5 @@ export class EmployeeListComponent implements OnInit {
   redirectCreateEmployee() {
       this.router.navigate(['/createEmployee'], {})
   }
+  editEmployee(employeeId: number | undefined){  this.router.navigate([`/employees/edit`, employeeId]);}
 }
