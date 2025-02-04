@@ -1,0 +1,53 @@
+.details-grid {
+  display: flex;
+  gap: 20px; /* Abstand zwischen den Spalten */
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Abstand zwischen den Zeilen */
+  flex: 1; /* Beide Spalten gleich groß */
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.detail-item input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.buttons {
+  display: flex;
+  justify-content: center; /* Zentriert die Buttons horizontal */
+  gap: 15px; /* Abstand zwischen den Buttons */
+  margin-top: 30px; /* Abstand nach oben zu den Eingabefeldern */
+}
+
+.buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.return {
+  background-color: #ccc;
+}
+
+.edit {
+  background-color: #ccc;
+}
+
+.delete {
+  background-color: #ccc;
+}

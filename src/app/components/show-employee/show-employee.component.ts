@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { EmployeeService } from '../../Services/employee.service';
+
 import {Employee} from "../../model/Employee";
 
 @Component({
@@ -10,10 +11,14 @@ import {Employee} from "../../model/Employee";
 })
 export class ShowEmployeeComponent implements OnInit {
 
-  public employee: any;
+  showConfirmation:boolean = false;
+  public employee = {} as Employee;
+  Employeename!: string;
+  EmployeeId!: number;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private employeeService: EmployeeService,
   ) {}
 
@@ -22,12 +27,30 @@ export class ShowEmployeeComponent implements OnInit {
     if (id){
     this.loadEmployeeDetails(Number(id));}
   }
-
+  redirectToEmployeeList(){
+    this.router.navigate(['/employee'], {})
+  }
   loadEmployeeDetails(id: number ) {
     this.employeeService.getEmployeeById(id).subscribe({
-      next: ({data}: { data: any }) => {
-        this.employee = data;
+      next: (employee: Employee) => {
+        this.employee = employee;
       },
     });
   }
+
+  deleteEmployee(name: string , id: number, event: MouseEvent) {
+    event.stopPropagation();
+    this.Employeename = name;
+    this.EmployeeId = id;
+    this.showConfirmation = true;
+  }
+  // todo: dialog noch fehlerhaft
+  confirmDeleteEmployee(id: number) {
+    this.employeeService.deleteEmployee(id).subscribe();
+    this.showConfirmation = false;
+  }
+  cancelDeleteEmployee() {
+    this.showConfirmation = false;
+  }
+  editEmployee(){  this.router.navigate([`/employees/edit`, this.employee.id]);}
 }
