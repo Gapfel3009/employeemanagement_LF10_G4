@@ -39,10 +39,17 @@
     </div>
 
     <div class="buttons">
-      <button class="return" >Zurück</button>
+      <button class="return" (click)="backOhnesichern()">Zurück</button>
       <button class="speichern" (click)="updateEmployeeDetails()" >Speichern</button>
     </div>
 
+  </div>
+  <div class="overlay" *ngIf="showConfirmation">
+    <div class="confirmation-box">
+      <p>Möchten Sie die Änderungen verwerfen?</p>
+      <button (click)="confirmBackWithoutEmployee()">Jo, hau weg die Änerungen</button>
+      <button (click)="cancelWithoutEmployee()">Ne, doch nicht</button>
+    </div>
   </div>
 
 

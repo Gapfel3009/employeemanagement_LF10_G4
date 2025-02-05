@@ -39,16 +39,15 @@ export class EditEmployeeComponent implements OnInit {
     this.employeeService.getEmployeeById(id).subscribe({
       next: (employee: Employee) => {
         this.employee = employee;
+        this.ogEmployee = employee;
       },
     });
   }
   updateEmployeeDetails() {
-    console.log("Sende Update für Employee:", this.employee);
     if (!this.employee || !this.employee.id) {
       console.error("Fehler: Kein gültiger Employee zum Aktualisieren.");
       return;
     }
-    this.employee.skillSet = []
     console.log("Sende Update für Employee:", this.employee);
 
     this.employeeService.updateEmployee(this.employee).subscribe({
@@ -60,6 +59,29 @@ export class EditEmployeeComponent implements OnInit {
         console.error("Fehler beim Update:", err);
       }
     })
+  }
+backOhnesichern(){
+
+  this.showConfirmation = true;
+
+
+}
+hasChanges():boolean {
+  return JSON.stringify(this.employee) !== JSON.stringify(this.ogEmployee);
+}
+  confirmBackWithoutEmployee(){
+    if (this.hasChanges()) {
+      this.employee = this.ogEmployee
+//    this.showConfirmation = false;
+      this.redirectToEmployeeList();
+      this.showConfirmation = false;
+    } else {
+      this.redirectToEmployeeList();
+      this.showConfirmation = false;
+    }
+  }
+  cancelWithoutEmployee(){
+    this.showConfirmation = false;
   }
 
 }
