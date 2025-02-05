@@ -13,9 +13,8 @@ export class EditEmployeeComponent implements OnInit {
 
   showConfirmation:boolean = false;
   public employee = {} as Employee;
-  private ogEmployee: Employee = {} as Employee;
-  Employeename!: string;
-  EmployeeId!: number;
+ // private ogEmployee: Employee = {} as Employee;
+
 
 //todo: nur die geänderten daten übernehmen & den zurückButton mit dialog versehen!
   constructor(
@@ -39,7 +38,7 @@ export class EditEmployeeComponent implements OnInit {
     this.employeeService.getEmployeeById(id).subscribe({
       next: (employee: Employee) => {
         this.employee = employee;
-        this.ogEmployee = employee;
+        //this.ogEmployee = JSON.parse(JSON.stringify(this.employee));
       },
     });
   }
@@ -61,24 +60,13 @@ export class EditEmployeeComponent implements OnInit {
     })
   }
 backOhnesichern(){
-
-  this.showConfirmation = true;
-
-
-}
-hasChanges():boolean {
-  return JSON.stringify(this.employee) !== JSON.stringify(this.ogEmployee);
+    // prüfen ob es überhaupt änderungen gab mit ogEmployee
+    this.showConfirmation = true;
 }
   confirmBackWithoutEmployee(){
-    if (this.hasChanges()) {
-      this.employee = this.ogEmployee
-//    this.showConfirmation = false;
-      this.redirectToEmployeeList();
-      this.showConfirmation = false;
-    } else {
-      this.redirectToEmployeeList();
-      this.showConfirmation = false;
-    }
+    this.redirectToEmployeeList();
+    this.showConfirmation = false;
+    console.log("keine änderungen")
   }
   cancelWithoutEmployee(){
     this.showConfirmation = false;

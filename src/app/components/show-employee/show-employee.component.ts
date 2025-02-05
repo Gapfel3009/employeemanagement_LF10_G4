@@ -48,6 +48,7 @@ export class ShowEmployeeComponent implements OnInit {
   confirmDeleteEmployee(id: number) {
     this.employeeService.deleteEmployee(id).subscribe();
     this.showConfirmation = false;
+    this.redirectToEmployeeList();
   }
   cancelDeleteEmployee() {
     this.showConfirmation = false;
