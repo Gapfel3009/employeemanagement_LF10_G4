@@ -23,11 +23,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   fetchData() {
-
-    alert("Vorher");
     this.employees$ = this.MaService.getEmployees();
-
-    alert("Nachher");
   }
   ngOnInit() {
     this.fetchData();

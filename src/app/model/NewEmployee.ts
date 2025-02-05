@@ -5,7 +5,6 @@ export class NewEmployee {
               public street?: string,
               public postcode?: string,
               public city?: string,
-              public phone?: string,
-              public skillSet: number[] = []) {
+              public phone?: string){
   }
 }

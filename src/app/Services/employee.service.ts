@@ -22,7 +22,7 @@ private apiUrl = '/backend'
   }
   createEmployee(employee: NewEmployee) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post(this.apiUrl, employee,{headers})
+    this.http.post("http://localhost:8089/employees", employee,{headers})
       .subscribe({
         next: (response) => console.log('Erfolgreich:', response),
         error: (error) => console.error('Fehler:', error.error)

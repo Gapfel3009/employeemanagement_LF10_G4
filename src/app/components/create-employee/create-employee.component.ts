@@ -10,6 +10,7 @@ import {EmployeeService} from "../../Services/employee.service";
 })
 export class CreateEmployeeComponent {
    showError:Boolean = false;
+   wrongPLZ:Boolean = false;
    employee: any;
   constructor(private router : Router,
               private MaService: EmployeeService) {
@@ -22,13 +23,19 @@ export class CreateEmployeeComponent {
   saveEmployeeToDB(firstName:string, lastName:string, city: string, street: string, phone:string ,postalCode: string) {
     if (!firstName || !lastName || !city || !street || !phone || !postalCode) {
       this.showError = true;
+    }else if(postalCode.length <5) {
+      this.wrongPLZ = true;
+    }else{
+      const newEmployee = new NewEmployee(lastName, firstName, street, postalCode, city, phone);
+      this.MaService.createEmployee(newEmployee);
+      this.redirectToEmployeeList()
     }
-    const newEmployee = new NewEmployee( lastName, firstName, street,postalCode, city,  phone, [0]);
-    this.MaService.createEmployee(newEmployee);
-    this.redirectToEmployeeList()
   }
 
-  ok(){
+  okFields(){
     this.showError = false;
+  }
+  okPostcode(){
+    this.wrongPLZ = false;
   }
 }
