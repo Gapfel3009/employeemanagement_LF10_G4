@@ -3,8 +3,11 @@
   <div>
     <app-header></app-header>
 
-    <app-searchbar></app-searchbar>
-    <button (click)="redirectCreateEmployee()" style="background-color: white;">Hinzufügen</button>
+
+    <div >
+      <app-searchbar></app-searchbar>
+      <button class="button-blue" (click)="redirectCreateEmployee()" style="float: right;">Hinzufügen</button>
+    </div>
   </div>
   <div>
     <table class ="table table-hover">

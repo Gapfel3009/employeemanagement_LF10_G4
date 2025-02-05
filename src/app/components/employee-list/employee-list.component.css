@@ -15,3 +15,19 @@
   border-radius: 10px;
   text-align: center;
 }
+.button-blue {
+  background-color: #0d6efd; /* Blauton von oben */
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px; /* Abgerundete Ecken */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  margin-right: 20px;
+  ;
+}
+
