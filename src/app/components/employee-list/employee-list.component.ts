@@ -34,10 +34,12 @@ export class EmployeeListComponent implements OnInit {
     this.Employeename = name;
     this.EmployeeId = id;
     this.showConfirmation = true;
+
   }
   confirmDeleteEmployee(id: number) {
     this.MaService.deleteEmployee(id).subscribe();
     this.showConfirmation = false;
+    window.location.reload();
   }
   cancelDeleteEmployee() {
     this.showConfirmation = false;

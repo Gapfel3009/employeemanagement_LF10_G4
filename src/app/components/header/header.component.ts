@@ -11,6 +11,6 @@ export class HeaderComponent {
   constructor(private router:Router) {
   }
   redirectToEmployeeList(){
-    this.router.navigate(['/employee'], {})
+    window.location.href="/employee";
   }
 }
