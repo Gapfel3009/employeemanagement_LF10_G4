@@ -28,7 +28,7 @@ export class ShowEmployeeComponent implements OnInit {
     this.loadEmployeeDetails(Number(id));}
   }
   redirectToEmployeeList(){
-    this.router.navigate(['/employee'], {})
+    window.location.href="/employee";
   }
   loadEmployeeDetails(id: number ) {
     this.employeeService.getEmployeeById(id).subscribe({
