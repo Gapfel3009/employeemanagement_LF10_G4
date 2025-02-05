@@ -54,11 +54,11 @@
 
   </div>
 
-  <div class="overlay" *ngIf="showConfirmation">
-    <div class="confirmation-box">
-      <p>Möchten sie den Mitarbeiter {{ employee.firstName }} mit ID {{employee.id}} wirklich löschen?</p>
-      <button (click)="employee.id ? confirmDeleteEmployee(employee.id) : null">Jo, hau weg den Typen</button>
-      <button (click)="cancelDeleteEmployee()">Ne, is der Falsche</button>
+  <div class="overlay buttons" *ngIf="showConfirmation">
+    <div class="confirmation-box button">
+      <p>Möchten Sie den Mitarbeiter {{ employee.firstName }} mit ID {{employee.id}} wirklich löschen?</p>
+      <button style="margin-right: 5px" (click)="employee.id ? confirmDeleteEmployee(employee.id) : null">Ja, möchte ich</button>
+      <button (click)="cancelDeleteEmployee()">Abbrechen</button>
     </div>
   </div>
 </div>

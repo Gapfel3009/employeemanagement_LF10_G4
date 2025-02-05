@@ -38,19 +38,9 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.return {
   background-color: #ccc;
 }
 
-.edit {
-  background-color: #ccc;
-}
-
-.delete {
-  background-color: #ccc;
-}
 .overlay{
   position: fixed;
   top: 0;

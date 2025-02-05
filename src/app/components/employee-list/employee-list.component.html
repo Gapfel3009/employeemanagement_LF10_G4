@@ -31,11 +31,11 @@
       </tbody>
     </table>
   </div>
-  <div class="overlay" *ngIf="showConfirmation">
-    <div class="confirmation-box">
-      <p>Möchten sie den Mitarbeiter {{Employeename}} mit ID {{EmployeeId}} wirklich löschen?</p>
-    <button (click)="confirmDeleteEmployee(EmployeeId)">Jo, hau weg den Typen</button>
-    <button (click)="cancelDeleteEmployee()">Ne, is der Falsche</button>
+  <div class="overlay buttons" *ngIf="showConfirmation">
+    <div class="confirmation-box button">
+      <p>Möchten Sie den Mitarbeiter {{Employeename}} mit ID {{EmployeeId}} wirklich löschen?</p>
+      <button style="margin-right: 5px" (click)="confirmDeleteEmployee(EmployeeId)">Ja, möchte ich</button>
+      <button (click)="cancelDeleteEmployee()">Abbrechen</button>
     </div>
   </div>
 </div>
