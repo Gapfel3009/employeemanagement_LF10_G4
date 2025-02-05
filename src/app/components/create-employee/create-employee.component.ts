@@ -24,7 +24,7 @@ export class CreateEmployeeComponent {
   saveEmployeeToDB(firstName:string, lastName:string, city: string, street: string, phone:string ,postalCode: string) {
     if (!firstName || !lastName || !city || !street || !phone || !postalCode) {
       this.showError = true;
-    }else if(postalCode.length <5) {
+    }else if(postalCode.length != 5) {
       this.wrongPLZ = true;
     }else{
       const newEmployee = new NewEmployee(lastName, firstName, street, postalCode, city, phone);
