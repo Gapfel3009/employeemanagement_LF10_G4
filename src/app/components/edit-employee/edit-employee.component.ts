@@ -13,7 +13,7 @@ export class EditEmployeeComponent implements OnInit {
 
   showConfirmation:boolean = false;
   public employee = {} as Employee;
- // private ogEmployee: Employee = {} as Employee;
+  private ogEmployee: Employee = {} as Employee;
 
 
 //todo: nur die geänderten daten übernehmen & den zurückButton mit dialog versehen!
@@ -38,7 +38,7 @@ export class EditEmployeeComponent implements OnInit {
     this.employeeService.getEmployeeById(id).subscribe({
       next: (employee: Employee) => {
         this.employee = employee;
-        //this.ogEmployee = JSON.parse(JSON.stringify(this.employee));
+        this.ogEmployee = this.employee;
       },
     });
   }
@@ -59,9 +59,15 @@ export class EditEmployeeComponent implements OnInit {
       }
     })
   }
-backOhnesichern(){
+backOhnesichern(employee: Employee){
     // prüfen ob es überhaupt änderungen gab mit ogEmployee
+  if (employee == this.ogEmployee){
+    console.log(this.employee,this.ogEmployee)
+    this.redirectToEmployeeList()
+  }else {
     this.showConfirmation = true;
+  }
+
 }
   confirmBackWithoutEmployee(){
     this.redirectToEmployeeList();

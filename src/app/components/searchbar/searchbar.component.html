@@ -1,2 +1,2 @@
-<input type="text" name="Searchbar" id="searchbar">
-<button type="submit" id="SubmitButton" class="material-icons">search</button>
+<input type="text" [(ngModel)]="searchText" (keyup)="onSearch()" placeholder="Mitarbeiter filtern...">
+<button type="submit" class="material-icons" (click)="onSearch()">search</button>

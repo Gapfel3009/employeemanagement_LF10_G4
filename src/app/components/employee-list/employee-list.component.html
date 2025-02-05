@@ -5,7 +5,7 @@
 
 
     <div >
-      <app-searchbar></app-searchbar>
+      <app-searchbar (searchEvent)="filterEmployees($event)"></app-searchbar>
       <button class="button-blue" (click)="redirectCreateEmployee()" style="float: right;">Neuer Mitarbeiter</button>
     </div>
   </div>
@@ -20,12 +20,12 @@
       </tr>
       </thead>
       <tbody >
-        <ng-container *ngFor="let e of employees$ | async">
-          <tr (click)="viewDetailsEmployee(e.id)" style="cursor: pointer;">
-            <td>{{e.firstName}}</td>
-            <td>{{e.lastName}}</td>
-            <td width="50" align="center"><button class="material-icons table-button btn btn-dark" (click)="editEmployee(e.id)">edit</button></td>
-            <td width="50" align="center"><button class="material-icons table-button btn btn-dark" (click)="deleteEmployee(e.firstName!, e.id!, $event)">delete</button></td>
+        <ng-container *ngFor="let employee of filteredEmployees">
+          <tr (click)="viewDetailsEmployee(employee.id)" style="cursor: pointer;">
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td width="50" align="center"><button class="material-icons table-button btn btn-dark" (click)="editEmployee(employee.id)">edit</button></td>
+            <td width="50" align="center"><button class="material-icons table-button btn btn-dark" (click)="deleteEmployee(employee.firstName!, employee.id!, $event)">delete</button></td>
           </tr>
         </ng-container>
       </tbody>

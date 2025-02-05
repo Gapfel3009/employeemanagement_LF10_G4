@@ -11,22 +11,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
-  employees$: Observable<Employee[]>;
+  employees$: Employee[];
   showConfirmation:boolean = false;
   Employeename!: string;
   EmployeeId!: number;
+  filteredEmployees: Employee[] = [];
 
   constructor(private http: HttpClient,
               private router: Router,
              private MaService: EmployeeService) {
-    this.employees$ = of([]);
+    this.employees$ = [];
   }
 
   fetchData() {
-    this.employees$ = this.MaService.getEmployees();
+    //this.employees$ = this.MaService.getEmployees();
   }
   ngOnInit() {
-    this.fetchData();
+    this.loadEmployees();
+  }
+  loadEmployees() {
+    this.MaService.getEmployees().subscribe({
+      next: (data: Employee[]) => {
+        this.employees$ = data;
+        this.filteredEmployees = data;
+      },});
   }
 
   deleteEmployee(name: string , id: number, event: MouseEvent ) {
@@ -55,5 +63,17 @@ export class EmployeeListComponent implements OnInit {
   redirectCreateEmployee() {
       this.router.navigate(['/createEmployee'], {})
   }
-  editEmployee(employeeId: number | undefined){  this.router.navigate([`/employees/edit`, employeeId]);}
+
+  editEmployee(employeeId: number | undefined){
+    this.router.navigate([`/employees/edit`, employeeId]);
+  }
+
+  filterEmployees(searchText: string) {
+    const searchLower = searchText.toLowerCase().trim();
+    this.filteredEmployees = this.employees$.filter(emp =>
+      emp.firstName?.toLowerCase().includes(searchLower) ||
+      emp.lastName?.toLowerCase().includes(searchLower)
+    );
+  }
+
 }
