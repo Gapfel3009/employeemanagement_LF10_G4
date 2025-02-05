@@ -17,7 +17,7 @@ export class CreateEmployeeComponent {
   }
 
   redirectToEmployeeList(){
-    this.router.navigate(['/employee'], {})
+    this.router.navigate(['/employee'], {});
   }
 
   saveEmployeeToDB(firstName:string, lastName:string, city: string, street: string, phone:string ,postalCode: string) {
